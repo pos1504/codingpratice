@@ -1,31 +1,42 @@
 let night_day = document.getElementById('night_day');
+let Body = {
+    setBackgroundColor: function (color) {
+        document.querySelector('body').style.backgroundColor = color;
+    },
+    setColor: function (color) {
+        document.querySelector('body').style.color = color;
+    }
+}
 
-function night_day_click() {
-    if (night_day.value == 'night') {
-        document.querySelector('body').style.backgroundColor = 'black';
-        document.querySelector('body').style.color = 'white';
-        night_day.innerHTML = 'day';
-
+let Links = {
+    setColor : function(color){
         let alist = document.querySelectorAll('a');
         let i = 0;
         while (i < alist.length) {
-            alist[i].style.color = 'powderblue';
+            alist[i].style.color = color;
             i = i + 1;
         }
+
+    },
+}
+
+
+function night_day_click() {
+    if (night_day.value == 'night') {
+        Body.setBackgroundColor('black');
+        Body.setColor('white');
+        night_day.innerHTML = 'day';
+
+        Links.setColor('powderblue');
 
         night_day.value = 'day';
     }
     else {
-        document.querySelector('body').style.backgroundColor = 'white';
-        document.querySelector('body').style.color = 'black';
+        Body.setBackgroundColor('white');
+        Body.setColor('black');
         night_day.innerHTML = 'night';
 
-        let alist = document.querySelectorAll('a');
-        let i = 0;
-        while (i < alist.length) {
-            alist[i].style.color = 'blue';
-            i = i + 1;
-        }
+        Links.setColor('blue');
 
         night_day.value = 'night';
 
