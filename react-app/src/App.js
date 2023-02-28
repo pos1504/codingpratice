@@ -48,6 +48,9 @@ function Article(props) {
     {props.body}
   </article>
 }
+function Update(props){
+
+}
 function App() {
   // const _mode = useState('WELCOME');
   // const mode = _mode[0];
@@ -61,8 +64,10 @@ function App() {
     { id: 3, title: 'javascript', body: 'javascript is ....' },
   ]);
   let content = null;
+  let contextControl = null;
   if(mode === 'WELCOME'){
     content = <Article title="Welcome" body="Hello, WEB"></Article>
+
   } else if(mode === 'READ'){
     let title,body = null;
     for(let i = 0;i < topics.length ; i++){
@@ -72,6 +77,10 @@ function App() {
       }
     }
     content = <Article title={title} body={body }></Article>
+    contextControl = <li><a href = {"/update/" + id} onClick={event=>{
+      event.preventDefault();
+      setMode('UPDATE');
+    }}>Update</a></li>
   } else if(mode ==='CREATE'){
     content = <Create onCreate={(_title, _body)=>{
       const newTopic ={id: nextId, title: _title, body: _body} // 상태의 데이터가 원시데이터 타입인경우 그냥 값을 넣어도 상관없지만!
@@ -81,7 +90,10 @@ function App() {
       setId(nextId);
       setNextId(nextId+1);
       setTopics(newTopics);
+     
     }}></Create>
+  } else if(mode ==='UPDATE'){
+    content = <Update></Update>
   }
   return (
     <div>
@@ -93,10 +105,16 @@ function App() {
         setId(_id);
       }}></Nav>
       {content}
+      <ul>
+      <li>
       <a href ='/create' onClick={(event) =>{
         event.preventDefault();
         setMode('CREATE');
       }}>Create</a>
+      </li>
+      {contextControl}
+      </ul>
+      
     </div>
   );
 }
