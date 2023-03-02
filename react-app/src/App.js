@@ -49,7 +49,27 @@ function Article(props) {
   </article>
 }
 function Update(props){
-
+  const [title, setTitle] =useState(props.title);
+  const [body, setBody] = useState(props.body);
+  return<article>
+  <h2>Update</h2>
+  <form onSubmit={event=>{
+    event.preventDefault();
+    const title = event.target.title.value; //event 발생한 태그 event.target == <form> 에서 name이 title인거 에 값을 가져와
+    const body = event.target.body.value;
+    props.onUpdate(title, body);
+  }}>
+    <p><input type='text' name="title" placeholder='title' value={title} onChange={(event) => { /** html과 React jsx에서 onchange 작동은 다름!*/
+      
+      setTitle(event.target.value); // 입력값으로 value값을 변경하기
+      console.log(event.target.value); //출력확인해보기
+    }}></input></p> 
+    <p><textarea name='body' placeholder='body' value={body} onChange={(event => {
+      setBody(event.target.value); // 입력값으로 value값을 변경하기
+    })}></textarea></p>
+    <p><input type="submit" value="Update" ></input></p>
+  </form>
+</article>
 }
 function App() {
   // const _mode = useState('WELCOME');
@@ -93,7 +113,16 @@ function App() {
      
     }}></Create>
   } else if(mode ==='UPDATE'){
-    content = <Update></Update>
+    let title,body = null;
+    for(let i = 0;i < topics.length ; i++){
+      if(id === topics[i].id){
+        title = topics[i].title;
+        body = topics[i].body;
+      }
+    }
+    content = <Update title={title} body={body} onUpdate={(title,body)=>{
+      
+    }}></Update>
   }
   return (
     <div>
