@@ -62,7 +62,7 @@ function Update(props){
     <p><input type='text' name="title" placeholder='title' value={title} onChange={(event) => { /** html과 React jsx에서 onchange 작동은 다름!*/
       
       setTitle(event.target.value); // 입력값으로 value값을 변경하기
-      console.log(event.target.value); //출력확인해보기
+     // console.log(event.target.value); //출력확인해보기
     }}></input></p> 
     <p><textarea name='body' placeholder='body' value={body} onChange={(event => {
       setBody(event.target.value); // 입력값으로 value값을 변경하기
@@ -96,6 +96,7 @@ function App() {
         body = topics[i].body;
       }
     }
+    
     content = <Article title={title} body={body }></Article>
     contextControl = <li><a href = {"/update/" + id} onClick={event=>{
       event.preventDefault();
@@ -121,6 +122,16 @@ function App() {
       }
     }
     content = <Update title={title} body={body} onUpdate={(title,body)=>{
+      const newTopics = [...topics]
+      const updatedTopic = {id: id, title: title, body: body } //id 값은 READ문에서 이미 한번 쓰여서 null값이 바뀐다. 그래서 따로 정의해줄 필요가 없다.
+      for(let i = 0;i < newTopics.length ;i++){
+        if(id === newTopics[i].id){
+          newTopics[i] = updatedTopic;
+          break;
+        }
+        setTopics(newTopics);
+        setMode('READ');
+      }
       
     }}></Update>
   }
