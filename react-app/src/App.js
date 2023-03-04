@@ -74,7 +74,7 @@ function Update(props){
 function App() {
   // const _mode = useState('WELCOME');
   // const mode = _mode[0];
-  // const setMode = _mode[1];
+  // const setMode = _mode[1];  
   const [mode, setMode] = useState('WELCOME');
   const [id, setId] = useState(null);
   const [nextId, setNextId] =useState(4);
@@ -106,7 +106,7 @@ function App() {
     content = <Create onCreate={(_title, _body)=>{
       const newTopic ={id: nextId, title: _title, body: _body} // 상태의 데이터가 원시데이터 타입인경우 그냥 값을 넣어도 상관없지만!
       const newTopics =[...topics]; // 상태의 데이터가 범 객체인 경우(객체, 배열) 다음과 같이 값을 지정해야 한다.
-      newTopics.push(newTopic); // newValue = {...value} >> newValue 변경 >> setValue(newValue) 식으로 해야한다.
+      newTopics.push(newTopic); // newValue = {...value} >> newValue 변경 >> setValue(newValue) 식으로 해야한다. 
       setMode('READ');
       setId(nextId);
       setNextId(nextId+1);
@@ -130,7 +130,7 @@ function App() {
           break;
         }
         setTopics(newTopics);
-        setMode('READ');
+        setMode('READ'); 
       }
       
     }}></Update>
