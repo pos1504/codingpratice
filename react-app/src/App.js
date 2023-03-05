@@ -123,7 +123,7 @@ function App() {
     }
     content = <Update title={title} body={body} onUpdate={(title,body)=>{
       const newTopics = [...topics]
-      const updatedTopic = {id: id, title: title, body: body } //id 값은 READ문에서 이미 한번 쓰여서 null값이 바뀐다. 그래서 따로 정의해줄 필요가 없다.
+      const updatedTopic = {id: id, title: title, body: body } //id 값은 READ문에서 이미 한번 쓰여서 null값이 바뀐다. 그래서 따로 정의해줄 필요가 없다. 
       for(let i = 0;i < newTopics.length ;i++){
         if(id === newTopics[i].id){
           newTopics[i] = updatedTopic;
