@@ -2,12 +2,15 @@ import logo from './logo.svg';
 import './App.css';
 import {useState} from 'react';
 function Header(props) {
+
   return <header>
     <h1><a href="/" onClick={(event) => {
       event.preventDefault();
       props.onChangeMode();
     }}>{props.title}</a></h1>
+   
   </header>
+
 }
 
 function Nav(props) {
@@ -72,6 +75,7 @@ function Update(props){
 </article>
 }
 function App() {
+ 
   // const _mode = useState('WELCOME');
   // const mode = _mode[0];
   // const setMode = _mode[1];  
@@ -169,6 +173,8 @@ function App() {
       
     </div>
   );
+
+
 }
 
 export default App;
