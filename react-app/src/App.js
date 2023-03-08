@@ -111,7 +111,7 @@ function App() {
       const newTopics = []
       for(let i = 0 ; i <topics.length; i++){
         if(topics[i].id !== id){
-          newTopics.push(topics[i]);
+          newTopics.push(topics[i]); //delete 할 topics제외하고 전부 업데이트
         }
       }
       setTopics(newTopics);
