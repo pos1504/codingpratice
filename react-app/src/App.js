@@ -64,7 +64,7 @@ function Update(props){
   }}>
     <p><input type='text' name="title" placeholder='title' value={title} onChange={(event) => { /** html과 React jsx에서 onchange 작동은 다름!*/
       
-      setTitle(event.target.value); // 입력값으로 value값을 변경하기
+      setTitle(event.target.value); // 입력값으로 value값을 변경하기 
      // console.log(event.target.value); //출력확인해보기
     }}></input></p> 
     <p><textarea name='body' placeholder='body' value={body} onChange={(event => {
@@ -173,7 +173,7 @@ function App() {
       
     </div>
   );
-
+ 
 
 }
 
