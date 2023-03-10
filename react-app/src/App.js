@@ -8,7 +8,7 @@ function Header(props) {
       event.preventDefault();
       props.onChangeMode();
     }}>{props.title}</a></h1>
-   
+   <p><iframe width="560" height="315" src="https://www.youtube.com/embed/7T7r_oSp0SE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></p>
   </header>
 
 }
@@ -49,7 +49,9 @@ function Article(props) {
   return <article>
     <h2>{props.title}</h2>
     {props.body}
+    
   </article>
+ 
 }
 function Update(props){
   const [title, setTitle] =useState(props.title);
