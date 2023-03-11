@@ -19,7 +19,7 @@ function Nav(props) {
     let t = props.topics[i];
     lis.push(<li key={t.id} ><a id={t.id} onClick={(event) => { //number값인 id를 태그의 속성으로 넘기면 string이 된다. typescript를 쓰는이유...
       event.preventDefault();
-      props.onChangeMode(Number(event.target.id) ); //t.id 그리고 문자를 숫자로 바꿈
+      props.onChangeMode(Number(event.target.id) ); //t.id 그리고 문자를 숫자로 바꿈  
     }}
       href={"/read/" + t.id} >{t.title}
     </a></li>);
