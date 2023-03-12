@@ -60,7 +60,7 @@ function Update(props){
   <h2>Update</h2>
   <form onSubmit={event=>{
     event.preventDefault();
-    const title = event.target.title.value; //event 발생한 태그 event.target == <form> 에서 name이 title인거 에 값을 가져와
+    const title = event.target.title.value; //event 발생한 태그 event.target == <form> 에서 name이 title인거 에 값을 가져와  
     const body = event.target.body.value;
     props.onUpdate(title, body);
   }}>
