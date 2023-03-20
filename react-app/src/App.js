@@ -8,7 +8,7 @@ function Header(props) {
       event.preventDefault();
       props.onChangeMode();
     }}>{props.title}</a></h1>
-   <p><iframe width="560" height="315" src="https://www.youtube.com/embed/7T7r_oSp0SE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></p>
+   
   </header>
 
 }
@@ -17,10 +17,10 @@ function Nav(props) {
   const lis = [];
   for (let i = 0; i < props.topics.length; i++) {
     let t = props.topics[i];
-    lis.push(<li key={t.id} ><a id={t.id} onClick={(event) => { //number값인 id를 태그의 속성으로 넘기면 string이 된다. typescript를 쓰는이유...
+    lis.push(<li key={t.id} ><a href={"/read/" + t.id} id={t.id} onClick={(event) => { //number값인 id를 태그의 속성으로 넘기면 string이 된다. typescript를 쓰는이유...
       event.preventDefault();
       props.onChangeMode(Number(event.target.id) ); //t.id 그리고 문자를 숫자로 바꿈   
-      href={"/read/" + t.id} >{t.title}
+    }}>{t.title}
     </a></li>);
   }
   return <nav>
